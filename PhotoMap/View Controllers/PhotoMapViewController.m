@@ -10,6 +10,7 @@
 
 #import "LocationsViewController.h"
 #import <MapKit/MapKit.h>
+#import "PhotoAnnotation.h"
 
 static NSString *const kTagSegueID = @"tagSegue";
 
@@ -18,7 +19,7 @@ static NSString *const kTagSegueID = @"tagSegue";
 @interface PhotoMapViewController () <LocationsViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic) UIImage *photo;
+@property (strong, nonatomic) UIImage *selectedImage;
 
 @end
 
@@ -68,9 +69,9 @@ static NSString *const kTagSegueID = @"tagSegue";
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
 
     // Do something with the images (based on your use case)
-    _photo = editedImage;
+    _selectedImage = editedImage;
     
-    [self performSegueWithIdentifier:kTagSegueID sender:_photo]; // FIXME: which sender?
+    [self performSegueWithIdentifier:kTagSegueID sender:_selectedImage]; // FIXME: which sender?
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -80,12 +81,26 @@ static NSString *const kTagSegueID = @"tagSegue";
 - (void)locationsViewController:(LocationsViewController *)controller didPickLocationWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude {
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude.floatValue, longitude.floatValue);
     
-    MKPointAnnotation *annotation = [MKPointAnnotation new];
-    annotation.coordinate = coordinate;
-    annotation.title = @"Picture!";
-    [self.mapView addAnnotation:annotation];
+    PhotoAnnotation *point = [[PhotoAnnotation alloc] init];
+    point.coordinate = coordinate;
+    point.photo = [self resizeImage:self.selectedImage withSize:CGSizeMake(50.0, 50.0)];
+    [self.mapView addAnnotation:point];
     
-    [self.navigationController popToViewController:self animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 
 #pragma mark - MapView

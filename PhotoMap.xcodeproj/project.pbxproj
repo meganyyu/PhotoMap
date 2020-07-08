@@ -43,6 +43,7 @@
 		71FFD9F924B61E8800620C05 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		71FFD9FC24B62A5500620C05 /* PhotoAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoAnnotation.h; sourceTree = "<group>"; };
 		71FFD9FD24B62A5500620C05 /* PhotoAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoAnnotation.m; sourceTree = "<group>"; };
+		71FFDA0024B6364C00620C05 /* CustomConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CustomConfig.xcconfig; sourceTree = "<group>"; };
 		B7CBCF83EE4466FF76810F69 /* libPods-PhotoMap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoMap.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -89,6 +90,7 @@
 		6A22E5DA20F2A3D90052F3C6 /* PhotoMap */ = {
 			isa = PBXGroup;
 			children = (
+				71FFD9FF24B6361A00620C05 /* Configs */,
 				6A22E5DB20F2A3D90052F3C6 /* AppDelegate.h */,
 				6A22E5DC20F2A3D90052F3C6 /* AppDelegate.m */,
 				6A22E5E120F2A3D90052F3C6 /* Main.storyboard */,
@@ -132,6 +134,14 @@
 				71FFD9FD24B62A5500620C05 /* PhotoAnnotation.m */,
 			);
 			path = "Photo Annotation";
+			sourceTree = "<group>";
+		};
+		71FFD9FF24B6361A00620C05 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				71FFDA0024B6364C00620C05 /* CustomConfig.xcconfig */,
+			);
+			path = Configs;
 			sourceTree = "<group>";
 		};
 		A8401941145BC10DCBD077EB /* Frameworks */ = {
@@ -269,6 +279,7 @@
 /* Begin XCBuildConfiguration section */
 		6A22E5EC20F2A3DA0052F3C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71FFDA0024B6364C00620C05 /* CustomConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -327,6 +338,7 @@
 		};
 		6A22E5ED20F2A3DA0052F3C6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71FFDA0024B6364C00620C05 /* CustomConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

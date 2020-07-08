@@ -10,8 +10,10 @@
 
 #import "LocationCell.h"
 
-static NSString * const clientID = @"QA1L0Z0ZNA2QVEEDHFPQWK0I5F1DE3GPLSNW4BZEBGJXUCFL";
-static NSString * const clientSecret = @"W2AOE1TYC4MHK5SZYOUGX0J3LVRALMPB4CXT3ZH21ZCPUMCU";
+static NSString *const kbaseAPIURLString = @"https://api.foursquare.com/v2/venues/search?";
+static NSString *const kClientID = @"Client ID";
+static NSString *const kClientSecretID = @"Client Secret";
+static NSString *const kInfoPlistID = @"Info";
 
 #pragma mark - Interface
 
@@ -65,6 +67,15 @@ static NSString * const clientSecret = @"W2AOE1TYC4MHK5SZYOUGX0J3LVRALMPB4CXT3ZH
 
 #pragma mark - Search Bar
 
+// note: move to its own API Manager later
++ (NSArray *)getKeys {
+    NSDictionary *const dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:kInfoPlistID ofType:@"plist"]];
+    NSString *const clientID = [dictionary objectForKey:kClientID];
+    NSString *const clientSecret = [dictionary objectForKey:kClientSecretID];
+    NSArray *const keys = [NSArray arrayWithObjects:clientID, clientSecret, nil];
+    return keys;
+}
+
 - (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     NSString *newText = [searchBar.text stringByReplacingCharactersInRange:range withString:text];
     [self fetchLocationsWithQuery:newText nearCity:@"San Francisco"];
@@ -76,11 +87,17 @@ static NSString * const clientSecret = @"W2AOE1TYC4MHK5SZYOUGX0J3LVRALMPB4CXT3ZH
 }
 
 - (void)fetchLocationsWithQuery:(NSString *)query nearCity:(NSString *)city {
-    NSString *baseURLString = @"https://api.foursquare.com/v2/venues/search?";
-    NSString *queryString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&v=20141020&near=%@,CA&query=%@", clientID, clientSecret, city, query];
-    queryString = [queryString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    //FIXME: Only works when I input actual keys? When I use the getKeys function, it adds a "22" to the URL for some reason
+    NSString *const clientID = @"44XEIAQRYL4AKWNNTGI32IGCSNQ1HIRL1M0WQOCW4NWTXQTA";
+    NSString *const clientSecret = @"PSCQOIHYHPIXERW1YFI1UZCFNB0GDE4ZBYSDIXMLW4Z3EGIS";
+    //NSLog(@"Client ID: %@, Client Secret: %@", clientID, clientSecret);
     
-    NSURL *url = [NSURL URLWithString:[baseURLString stringByAppendingString:queryString]];
+    NSString *queryString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&v=20141020&near=%@,CA&query=%@", clientID, clientSecret, city, query];
+    NSLog(@"query string: %@", [kbaseAPIURLString stringByAppendingString:queryString]);
+    queryString = [queryString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSLog(@"query string: %@", [kbaseAPIURLString stringByAppendingString:queryString]);
+    
+    NSURL *url = [NSURL URLWithString:[kbaseAPIURLString stringByAppendingString:queryString]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];

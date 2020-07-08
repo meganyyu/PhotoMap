@@ -8,15 +8,22 @@
 
 #import "FullImageViewController.h"
 
+#pragma mark - Interface
+
 @interface FullImageViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *fullImageView;
+
 @end
+
+#pragma mark - Implementation
 
 @implementation FullImageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [_fullImageView setImage:_selectedImage];
 }
 
 - (void)didReceiveMemoryWarning {

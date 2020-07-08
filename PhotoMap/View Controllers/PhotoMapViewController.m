@@ -8,11 +8,13 @@
 
 #import "PhotoMapViewController.h"
 
+#import "FullImageViewController.h"
 #import "LocationsViewController.h"
 #import <MapKit/MapKit.h>
 #import "PhotoAnnotation.h"
 
 static NSString *const kTagSegueID = @"tagSegue";
+static NSString *const kFullImageSegueID = @"fullImageSegue";
 
 #pragma mark - Interface
 
@@ -111,19 +113,31 @@ static NSString *const kTagSegueID = @"tagSegue";
         annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
         annotationView.canShowCallout = true;
         annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
+        annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     }
 
     UIImageView *imageView = (UIImageView*)annotationView.leftCalloutAccessoryView;
-    imageView.image = [UIImage imageNamed:@"camera"];
+    imageView.image = [UIImage imageNamed:@"camera-icon"];
 
     return annotationView;
 }
 
+- (void)mapView:(MKMapView *)mapView annotationView:(nonnull MKAnnotationView *)view calloutAccessoryControlTapped:(nonnull UIControl *)control {
+    [self performSegueWithIdentifier:kFullImageSegueID sender:((UIImageView*)view.leftCalloutAccessoryView).image];
+}
+
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    LocationsViewController *locationsViewController = [segue destinationViewController];
-    locationsViewController.delegate = self;
+    if ([[segue identifier] isEqualToString:kTagSegueID]) {
+        LocationsViewController *locationsViewController = [segue destinationViewController];
+        locationsViewController.delegate = self;
+    } else if ([[segue identifier] isEqualToString:kFullImageSegueID]) {
+        FullImageViewController *fullImageViewController = [segue destinationViewController];
+        UIImage *image = (UIImage*)sender;
+        fullImageViewController.selectedImage = image;
+    }
 }
 
 @end

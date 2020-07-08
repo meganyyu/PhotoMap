@@ -1,0 +1,19 @@
+//
+//  CustomConfig.xcconfig
+//  PhotoMap
+//
+//  Created by meganyu on 7/8/20.
+//  Copyright © 2020 Codepath. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// Keys
+API_CLIENT_ID = ""
+API_CLIENT_SECRET = ""
+
+// Use `LocalConfig.xcconfig`
+// that includes local overrides for keys if it exists.
+
+#include? "LocalConfig.xcconfig"

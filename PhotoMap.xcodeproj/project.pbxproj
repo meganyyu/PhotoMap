@@ -12,12 +12,12 @@
 		6A22E5E520F2A3DA0052F3C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A22E5E420F2A3DA0052F3C6 /* Assets.xcassets */; };
 		6A22E5E820F2A3DA0052F3C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A22E5E620F2A3DA0052F3C6 /* LaunchScreen.storyboard */; };
 		6A22E5EB20F2A3DA0052F3C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22E5EA20F2A3DA0052F3C6 /* main.m */; };
-		6A22E5F320F2A41B0052F3C6 /* PhotoMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22E5F220F2A41A0052F3C6 /* PhotoMapViewController.m */; };
 		6A22E5F720F2A4790052F3C6 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22E5F620F2A4790052F3C6 /* LocationCell.m */; };
 		6A22E5FE20F2A4AE0052F3C6 /* FullImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22E5FD20F2A4AE0052F3C6 /* FullImageViewController.m */; };
 		71FFD9F824B61E1B00620C05 /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22E5FA20F2A4A00052F3C6 /* LocationsViewController.m */; };
 		71FFD9FA24B61E8800620C05 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FFD9F924B61E8800620C05 /* MapKit.framework */; };
 		71FFD9FE24B62A5500620C05 /* PhotoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FFD9FD24B62A5500620C05 /* PhotoAnnotation.m */; };
+		71FFDA0124B644BB00620C05 /* PhotoMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22E5F220F2A41A0052F3C6 /* PhotoMapViewController.m */; };
 		A81105B65E41CA038B04C843 /* libPods-PhotoMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7CBCF83EE4466FF76810F69 /* libPods-PhotoMap.a */; };
 /* End PBXBuildFile section */
 
@@ -245,9 +245,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71FFDA0124B644BB00620C05 /* PhotoMapViewController.m in Sources */,
 				71FFD9F824B61E1B00620C05 /* LocationsViewController.m in Sources */,
 				6A22E5EB20F2A3DA0052F3C6 /* main.m in Sources */,
-				6A22E5F320F2A41B0052F3C6 /* PhotoMapViewController.m in Sources */,
 				6A22E5FE20F2A4AE0052F3C6 /* FullImageViewController.m in Sources */,
 				71FFD9FE24B62A5500620C05 /* PhotoAnnotation.m in Sources */,
 				6A22E5F720F2A4790052F3C6 /* LocationCell.m in Sources */,

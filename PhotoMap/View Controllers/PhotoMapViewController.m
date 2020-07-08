@@ -117,7 +117,8 @@ static NSString *const kFullImageSegueID = @"fullImageSegue";
     }
 
     UIImageView *imageView = (UIImageView*)annotationView.leftCalloutAccessoryView;
-    imageView.image = [UIImage imageNamed:@"camera-icon"];
+    //imageView.image = [UIImage imageNamed:@"camera-icon"];
+    imageView.image = _selectedImage;
 
     return annotationView;
 }

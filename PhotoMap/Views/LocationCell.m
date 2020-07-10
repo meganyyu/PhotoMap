@@ -7,7 +7,16 @@
 //
 
 #import "LocationCell.h"
+
 #import <AFNetworking/UIImageView+AFNetworking.h>
+
+static NSString *const kCategoriesKey = @"categories";
+static NSString *const kIconPrefixKey = @"icon.prefix";
+static NSString *const kIconSuffixKey = @"icon.suffix";
+static NSString *const kLocationAddressKey = @"location.address";
+static NSString *const kNameKey = @"name";
+
+#pragma mark - Interface
 
 @interface LocationCell()
 
@@ -18,28 +27,31 @@
 
 @end
 
+#pragma mark - Implementation
+
 @implementation LocationCell
+
+#pragma mark - Setup
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
+#pragma mark - Update Data
+
 - (void)updateWithLocation:(NSDictionary *)location {
-    self.nameLabel.text = location[@"name"];
-    self.addressLabel.text = [location valueForKeyPath:@"location.address"];
+    self.nameLabel.text = location[kNameKey];
+    self.addressLabel.text = [location valueForKeyPath:kLocationAddressKey];
     
-    NSArray *categories = location[@"categories"];
+    NSArray *categories = location[kCategoriesKey];
     if (categories && categories.count > 0) {
         NSDictionary *category = categories[0];
-        NSString *urlPrefix = [category valueForKeyPath:@"icon.prefix"];
-        NSString *urlSuffix = [category valueForKeyPath:@"icon.suffix"];
+        NSString *urlPrefix = [category valueForKeyPath:kIconPrefixKey];
+        NSString *urlSuffix = [category valueForKeyPath:kIconSuffixKey];
         NSString *urlString = [NSString stringWithFormat:@"%@bg_32%@", urlPrefix, urlSuffix];
         
         NSURL *url = [NSURL URLWithString:urlString];

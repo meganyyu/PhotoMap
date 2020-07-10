@@ -71,11 +71,11 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" rowHeight="61" id="y7L-pG-TRL" customClass="LocationCell">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="61"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" id="y7L-pG-TRL" customClass="LocationCell">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="61.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y7L-pG-TRL" id="sAK-kx-BbN">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="61"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="61.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fzg-nZ-8sL">
@@ -85,14 +85,14 @@
                                                         <constraint firstAttribute="height" constant="32" id="yBW-dh-Q5I"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thai Basil" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlx-Dj-obh">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Thai Basil" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlx-Dj-obh">
                                                     <rect key="frame" x="48" y="14" width="293" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="101 S Murphy Ave" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEv-ev-UD4">
-                                                    <rect key="frame" x="48" y="33" width="293" height="15"/>
+                                                    <rect key="frame" x="48" y="33" width="293" height="15.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.43902853260000002" green="0.43902853260000002" blue="0.43902853260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -102,6 +102,7 @@
                                                 <constraint firstItem="Qlx-Dj-obh" firstAttribute="leading" secondItem="hEv-ev-UD4" secondAttribute="leading" id="AAK-38-eMQ"/>
                                                 <constraint firstItem="Qlx-Dj-obh" firstAttribute="leading" secondItem="fzg-nZ-8sL" secondAttribute="trailing" constant="8" id="E42-ZF-SDe"/>
                                                 <constraint firstItem="fzg-nZ-8sL" firstAttribute="leading" secondItem="sAK-kx-BbN" secondAttribute="leading" constant="8" id="Kq8-b4-3d8"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="hEv-ev-UD4" secondAttribute="bottom" constant="2" id="QGw-9d-CEO"/>
                                                 <constraint firstAttribute="trailing" secondItem="hEv-ev-UD4" secondAttribute="trailing" constant="8" id="VXc-bz-JCF"/>
                                                 <constraint firstAttribute="trailing" secondItem="Qlx-Dj-obh" secondAttribute="trailing" constant="8" id="iuf-mJ-wyk"/>
                                                 <constraint firstItem="hEv-ev-UD4" firstAttribute="leading" secondItem="fzg-nZ-8sL" secondAttribute="trailing" constant="8" id="lXI-ds-iEv"/>
@@ -145,12 +146,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RZS-Sr-PhR">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RZS-Sr-PhR">
                                 <rect key="frame" x="0.0" y="88" width="375" height="724"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RZS-Sr-PhR" firstAttribute="leading" secondItem="iB2-E3-wo8" secondAttribute="leading" id="BFX-xC-UFx"/>
+                            <constraint firstAttribute="bottom" secondItem="RZS-Sr-PhR" secondAttribute="bottom" id="xVR-z1-ZAm"/>
+                            <constraint firstItem="RZS-Sr-PhR" firstAttribute="top" secondItem="iB2-E3-wo8" secondAttribute="top" id="xf6-Sl-sl1"/>
+                            <constraint firstItem="RZS-Sr-PhR" firstAttribute="trailing" secondItem="iB2-E3-wo8" secondAttribute="trailing" id="xxB-cU-6Fa"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="iB2-E3-wo8"/>
                     </view>
                     <connections>

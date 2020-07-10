@@ -38,7 +38,7 @@ static NSString *const kFullImageSegueID = @"fullImageSegue";
     
     //one degree of latitude is approximately 111 kilometers (69 miles) at all times.
     MKCoordinateRegion const sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
-    [self.mapView setRegion:sfRegion animated:false];
+    [_mapView setRegion:sfRegion animated:false];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,7 +66,7 @@ static NSString *const kFullImageSegueID = @"fullImageSegue";
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
     UIImage *const editedImage = info[UIImagePickerControllerEditedImage];
-
+    
     _selectedImage = editedImage;
     
     [self performSegueWithIdentifier:kTagSegueID sender:_selectedImage];
@@ -81,8 +81,8 @@ static NSString *const kFullImageSegueID = @"fullImageSegue";
     
     PhotoAnnotation *const point = [[PhotoAnnotation alloc] init];
     point.coordinate = coordinate;
-    point.photo = [self resizeImage:self.selectedImage withSize:CGSizeMake(50.0, 50.0)];
-    [self.mapView addAnnotation:point];
+    point.photo = [self resizeImage:_selectedImage withSize:CGSizeMake(50.0, 50.0)];
+    [_mapView addAnnotation:point];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -111,11 +111,11 @@ static NSString *const kFullImageSegueID = @"fullImageSegue";
         annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
         annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     }
-
+    
     UIImageView *imageView = (UIImageView*)annotationView.leftCalloutAccessoryView;
     //imageView.image = [UIImage imageNamed:@"camera-icon"];
     imageView.image = _selectedImage;
-
+    
     return annotationView;
 }
 

@@ -16,6 +16,7 @@
 		6A22E5FE20F2A4AE0052F3C6 /* FullImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22E5FD20F2A4AE0052F3C6 /* FullImageViewController.m */; };
 		710E8DF824B6698A00C430F9 /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22E5FA20F2A4A00052F3C6 /* LocationsViewController.m */; };
 		710E8DF924B6698A00C430F9 /* PhotoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FFD9FD24B62A5500620C05 /* PhotoAnnotation.m */; };
+		710E8E0424B8183C00C430F9 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 710E8E0324B8183C00C430F9 /* APIManager.m */; };
 		71FFD9FA24B61E8800620C05 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FFD9F924B61E8800620C05 /* MapKit.framework */; };
 		71FFDA0124B644BB00620C05 /* PhotoMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22E5F220F2A41A0052F3C6 /* PhotoMapViewController.m */; };
 		A81105B65E41CA038B04C843 /* libPods-PhotoMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7CBCF83EE4466FF76810F69 /* libPods-PhotoMap.a */; };
@@ -40,6 +41,8 @@
 		6A22E5FA20F2A4A00052F3C6 /* LocationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
 		6A22E5FC20F2A4AE0052F3C6 /* FullImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FullImageViewController.h; sourceTree = "<group>"; };
 		6A22E5FD20F2A4AE0052F3C6 /* FullImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullImageViewController.m; sourceTree = "<group>"; };
+		710E8E0224B8183C00C430F9 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
+		710E8E0324B8183C00C430F9 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		71FFD9F924B61E8800620C05 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		71FFD9FC24B62A5500620C05 /* PhotoAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoAnnotation.h; sourceTree = "<group>"; };
 		71FFD9FD24B62A5500620C05 /* PhotoAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoAnnotation.m; sourceTree = "<group>"; };
@@ -90,6 +93,7 @@
 		6A22E5DA20F2A3D90052F3C6 /* PhotoMap */ = {
 			isa = PBXGroup;
 			children = (
+				710E8E0124B8182600C430F9 /* API Manager */,
 				71FFD9FF24B6361A00620C05 /* Configs */,
 				6A22E5DB20F2A3D90052F3C6 /* AppDelegate.h */,
 				6A22E5DC20F2A3D90052F3C6 /* AppDelegate.m */,
@@ -125,6 +129,15 @@
 				6A22E5F620F2A4790052F3C6 /* LocationCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		710E8E0124B8182600C430F9 /* API Manager */ = {
+			isa = PBXGroup;
+			children = (
+				710E8E0224B8183C00C430F9 /* APIManager.h */,
+				710E8E0324B8183C00C430F9 /* APIManager.m */,
+			);
+			path = "API Manager";
 			sourceTree = "<group>";
 		};
 		71FFD9FB24B62A2700620C05 /* Photo Annotation */ = {
@@ -249,6 +262,7 @@
 				710E8DF924B6698A00C430F9 /* PhotoAnnotation.m in Sources */,
 				71FFDA0124B644BB00620C05 /* PhotoMapViewController.m in Sources */,
 				6A22E5EB20F2A3DA0052F3C6 /* main.m in Sources */,
+				710E8E0424B8183C00C430F9 /* APIManager.m in Sources */,
 				6A22E5FE20F2A4AE0052F3C6 /* FullImageViewController.m in Sources */,
 				6A22E5F720F2A4790052F3C6 /* LocationCell.m in Sources */,
 				6A22E5DD20F2A3D90052F3C6 /* AppDelegate.m in Sources */,

@@ -14,9 +14,9 @@
 		6A22E5EB20F2A3DA0052F3C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22E5EA20F2A3DA0052F3C6 /* main.m */; };
 		6A22E5F720F2A4790052F3C6 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22E5F620F2A4790052F3C6 /* LocationCell.m */; };
 		6A22E5FE20F2A4AE0052F3C6 /* FullImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22E5FD20F2A4AE0052F3C6 /* FullImageViewController.m */; };
-		71FFD9F824B61E1B00620C05 /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22E5FA20F2A4A00052F3C6 /* LocationsViewController.m */; };
+		710E8DF824B6698A00C430F9 /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22E5FA20F2A4A00052F3C6 /* LocationsViewController.m */; };
+		710E8DF924B6698A00C430F9 /* PhotoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FFD9FD24B62A5500620C05 /* PhotoAnnotation.m */; };
 		71FFD9FA24B61E8800620C05 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FFD9F924B61E8800620C05 /* MapKit.framework */; };
-		71FFD9FE24B62A5500620C05 /* PhotoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FFD9FD24B62A5500620C05 /* PhotoAnnotation.m */; };
 		71FFDA0124B644BB00620C05 /* PhotoMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22E5F220F2A41A0052F3C6 /* PhotoMapViewController.m */; };
 		A81105B65E41CA038B04C843 /* libPods-PhotoMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7CBCF83EE4466FF76810F69 /* libPods-PhotoMap.a */; };
 /* End PBXBuildFile section */
@@ -245,11 +245,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				710E8DF824B6698A00C430F9 /* LocationsViewController.m in Sources */,
+				710E8DF924B6698A00C430F9 /* PhotoAnnotation.m in Sources */,
 				71FFDA0124B644BB00620C05 /* PhotoMapViewController.m in Sources */,
-				71FFD9F824B61E1B00620C05 /* LocationsViewController.m in Sources */,
 				6A22E5EB20F2A3DA0052F3C6 /* main.m in Sources */,
 				6A22E5FE20F2A4AE0052F3C6 /* FullImageViewController.m in Sources */,
-				71FFD9FE24B62A5500620C05 /* PhotoAnnotation.m in Sources */,
 				6A22E5F720F2A4790052F3C6 /* LocationCell.m in Sources */,
 				6A22E5DD20F2A3D90052F3C6 /* AppDelegate.m in Sources */,
 			);
@@ -395,12 +395,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8652WRRVFY;
 				INFOPLIST_FILE = PhotoMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.PhotoMap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meganyu.PhotoMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -412,12 +413,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8652WRRVFY;
 				INFOPLIST_FILE = PhotoMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.PhotoMap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meganyu.PhotoMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -15,13 +15,16 @@ static NSString *const kClientID = @"Client ID";
 static NSString *const kClientSecretID = @"Client Secret";
 static NSString *const kInfoPlistID = @"Info";
 
+static NSString *const hardCodedClientID = @"44XEIAQRYL4AKWNNTGI32IGCSNQ1HIRL1M0WQOCW4NWTXQTA";
+static NSString *const hardCodedClientSecret = @"PSCQOIHYHPIXERW1YFI1UZCFNB0GDE4ZBYSDIXMLW4Z3EGIS";
+
 #pragma mark - Interface
 
 @interface LocationsViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) NSArray *results;
+@property (weak, nonatomic) IBOutlet UITableView *const tableView;
+@property (weak, nonatomic) IBOutlet UISearchBar *const searchBar;
+@property (strong, nonatomic) NSArray *const results;
 
 @end
 
@@ -67,13 +70,17 @@ static NSString *const kInfoPlistID = @"Info";
 
 #pragma mark - Search Bar
 
-// note: move to its own API Manager later
-+ (NSArray *)getKeys {
+// FIXME: move to its own API Manager later
++ (NSString *)getClientID {
     NSDictionary *const dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:kInfoPlistID ofType:@"plist"]];
-    NSString *const clientID = [dictionary objectForKey:kClientID];
-    NSString *const clientSecret = [dictionary objectForKey:kClientSecretID];
-    NSArray *const keys = [NSArray arrayWithObjects:clientID, clientSecret, nil];
-    return keys;
+    NSString *const clientID = (NSString *)[dictionary objectForKey:kClientID];
+    return clientID;
+}
+
++ (NSString *)getClientSecret {
+    NSDictionary *const dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:kInfoPlistID ofType:@"plist"]];
+    NSString *const clientSecret = (NSString *)[dictionary objectForKey:kClientSecretID];
+    return clientSecret;
 }
 
 - (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -87,23 +94,26 @@ static NSString *const kInfoPlistID = @"Info";
 }
 
 - (void)fetchLocationsWithQuery:(NSString *)query nearCity:(NSString *)city {
-    //FIXME: Only works when I input actual keys? When I use the getKeys function, it adds a "22" to the URL for some reason
-    NSString *const clientID = @"44XEIAQRYL4AKWNNTGI32IGCSNQ1HIRL1M0WQOCW4NWTXQTA";
-    NSString *const clientSecret = @"PSCQOIHYHPIXERW1YFI1UZCFNB0GDE4ZBYSDIXMLW4Z3EGIS";
-    //NSLog(@"Client ID: %@, Client Secret: %@", clientID, clientSecret);
+    
+    NSString *const clientID = [LocationsViewController getClientID];
+    NSString *const clientSecret = [LocationsViewController getClientSecret];
+    
+    // Testing logs for FIXME
+    NSLog(@"clientID is? %@. clientSecret is? %@", clientID, clientSecret);
+    NSLog(@"hardCodedClientID is? %@. hardCodedClientSecret is? %@", clientID, clientSecret);
+    NSLog(@"clientID is equal to hardCodedClientID? %d", [clientID isEqualToString:hardCodedClientID]);
+    NSLog(@"clientSecret is equal to hardCodedClientSecret? %d", [clientSecret isEqualToString:hardCodedClientSecret]);
     
     NSString *queryString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&v=20141020&near=%@,CA&query=%@", clientID, clientSecret, city, query];
-    NSLog(@"query string: %@", [kbaseAPIURLString stringByAppendingString:queryString]);
     queryString = [queryString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSLog(@"query string: %@", [kbaseAPIURLString stringByAppendingString:queryString]);
     
-    NSURL *url = [NSURL URLWithString:[kbaseAPIURLString stringByAppendingString:queryString]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURL *const url = [NSURL URLWithString:[kbaseAPIURLString stringByAppendingString:queryString]];
+    NSURLRequest *const request = [NSURLRequest requestWithURL:url];
     
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURLSession *const session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *const task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (data) {
-            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSDictionary *const responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             NSLog(@"response: %@", responseDictionary);
             self.results = [responseDictionary valueForKeyPath:@"response.venues"];
             [self.tableView reloadData];

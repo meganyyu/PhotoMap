@@ -20,7 +20,7 @@ static NSString *const kFullImageSegueID = @"fullImageSegue";
 
 @interface PhotoMapViewController () <LocationsViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet MKMapView *const mapView;
 @property (strong, nonatomic) UIImage *selectedImage;
 
 @end
@@ -37,19 +37,18 @@ static NSString *const kFullImageSegueID = @"fullImageSegue";
     _mapView.delegate = self;
     
     //one degree of latitude is approximately 111 kilometers (69 miles) at all times.
-    MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
+    MKCoordinateRegion const sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
     [self.mapView setRegion:sfRegion animated:false];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - User Interaction
 
 - (IBAction)didTapCamera:(id)sender {
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    UIImagePickerController *const imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
     
@@ -66,24 +65,21 @@ static NSString *const kFullImageSegueID = @"fullImageSegue";
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
-    // Get the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    UIImage *const editedImage = info[UIImagePickerControllerEditedImage];
 
-    // Do something with the images (based on your use case)
     _selectedImage = editedImage;
     
-    [self performSegueWithIdentifier:kTagSegueID sender:_selectedImage]; // FIXME: which sender?
+    [self performSegueWithIdentifier:kTagSegueID sender:_selectedImage];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - LocationsViewControllerDelegate
 
-- (void)locationsViewController:(LocationsViewController *)controller didPickLocationWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude {
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude.floatValue, longitude.floatValue);
+- (void)locationsViewController:(LocationsViewController *const)controller didPickLocationWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude {
+    CLLocationCoordinate2D const coordinate = CLLocationCoordinate2DMake(latitude.floatValue, longitude.floatValue);
     
-    PhotoAnnotation *point = [[PhotoAnnotation alloc] init];
+    PhotoAnnotation *const point = [[PhotoAnnotation alloc] init];
     point.coordinate = coordinate;
     point.photo = [self resizeImage:self.selectedImage withSize:CGSizeMake(50.0, 50.0)];
     [self.mapView addAnnotation:point];
@@ -91,8 +87,8 @@ static NSString *const kFullImageSegueID = @"fullImageSegue";
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
-    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+- (UIImage *)resizeImage:(UIImage *const)image withSize:(CGSize)size {
+    UIImageView *const resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     
     resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
     resizeImageView.image = image;

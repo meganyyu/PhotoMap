@@ -20,6 +20,8 @@
 
 @property (weak, nonatomic) id<LocationsViewControllerDelegate> delegate;
 
-+ (NSArray *)getKeys;
++ (NSString *)getClientID;
+
++ (NSString *)getClientSecret;
 
 @end
